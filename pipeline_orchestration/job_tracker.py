@@ -1,5 +1,10 @@
 import datetime
 import psycopg2
+from configparser import ConfigParser
+
+dbconfig = ConfigParser()
+dbconfig.read('config.ini')
+
 
 # Your job status table should contain these fields:
 # - Job_id (primary and unique): naming convention can be jobname_yyyy-mm-dd
@@ -88,3 +93,4 @@ class Tracker(object):
         except (Exception, psycopg2.Error) as error:
             print("Error while connecting to PostgreSQL", error)
         return connection
+
